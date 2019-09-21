@@ -3,7 +3,6 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
-   
    http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans.xsd
    http://www.springframework.org/schema/context
@@ -13,13 +12,17 @@
 	
    ">
 
-	<context:component-scan base-package="org.sathyatech.onlineshopping12" />
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<context:component-scan base-package="org.sathyatech.onlineshopping12.controller" />
+	
+	<!-- <context:component-scan base-package="org.sathyatech.OnlineShoppingBackend.daoimpl"/> -->
+	
+	<bean id="viewResolver"	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
 	<mvc:annotation-driven />
-	<mvc:resources location="/assets/"
-		mapping="/resources/**" />
+	
+	<!-- Loaing static resources -->	
+	<mvc:resources location="/assets/" mapping="/resources/**" />
 </beans>
