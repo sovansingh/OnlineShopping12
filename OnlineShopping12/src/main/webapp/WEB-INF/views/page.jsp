@@ -6,7 +6,7 @@
 
 <spring:url value="/resources/css" var="css" />
 <spring:url value="/resources/js" var="js" />
-<spring:url value="/resoures/images" var="images" />
+<spring:url value="/resources/images" var="images" />
 
 <c:set value="${pageContext.request.contextPath }" var="contextRoot" />
 
@@ -24,7 +24,8 @@
 <title>Online Shopping - ${title }</title>
 
 <script>
-	window.menu = '${title}';
+	window.menu = '${title }';
+	window.contextRoot = '${contextRoot}';
 </script>
 
 <!-- Bootstrap core CSS -->
@@ -32,6 +33,9 @@
 
 <!-- Bootstrap readable theme -->
 <link href="${css }/bootstrap-readable-theme.css" rel="stylesheet">
+
+<!-- Bootstrap DataTables -->
+<link href="${css }/dataTables.bootstrap.css" rel="stylesheet">
 
 
 <!-- Add custom CSS here -->
@@ -65,6 +69,11 @@
 			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
 				<%@include file="listProducts.jsp"%>
 			</c:if>
+			
+			<!-- Load only when user click show products -->
+			<c:if test="${userClickShowProduct == true }">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
 			<!-- /.container -->
 		</div>
 		`
@@ -72,11 +81,21 @@
 		<%@include file="./shared/footer.jsp"%>
 		<!-- /.container -->
 
-		<!-- JavaScript -->
-		<script src="${js }/jquery.js"></script>
+		<!-- JQuery -->
+		<script src="${js }/jquery-1.10.2.js"></script>
+		
+		<!-- BootStrap core javaScript -->
 		<script src="${js }/bootstrap.js"></script>
+		
+		
+		<!-- DataTable Plugin -->
+		<script src="${js }/jquery.dataTables.js"></script>
 
-		<!-- Sself coded javascript -->
+		<!-- DataTable bootStrap script -->
+		<script src="${js }/dataTables.bootstrap.js"></script>
+
+
+		<!-- Self coded javascript -->
 		<script type="${js }/myapp.js"></script>
 	</div>
 </body>
